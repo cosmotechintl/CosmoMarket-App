@@ -36,7 +36,8 @@ class _MyAppState extends State<MyApp> {
                     letterSpacing: 2.0
                 ),
               fixedSize: Size(
-                  MediaQuery.of(context).size.width*0.93,MediaQuery.of(context).size.height*0.07
+                  MediaQuery.of(context).size.width*0.93,
+                  MediaQuery.of(context).size.height*0.07
               )
             )
         ),

@@ -1,3 +1,4 @@
+import 'package:cosmomarket/screen/futsal/futsal_home_screen.dart';
 import 'package:flutter/material.dart';
 
 class Services extends StatefulWidget {
@@ -11,7 +12,11 @@ class _ServicesState extends State<Services> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Services')),
+      appBar: AppBar(
+          title: const Text(
+              'Services',
+          ),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: GridView.extent(
@@ -39,7 +44,11 @@ class _ServicesState extends State<Services> {
       color: Color(0xFFECF7FB),
       child: InkWell(
         splashColor: const Color(0xFFFFC8B0),
-        onTap: (){},
+        onTap: (){
+          Navigator.push(context,MaterialPageRoute(
+              builder: (_)=>const FutsalHomeScreen()
+          ));
+        },
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
