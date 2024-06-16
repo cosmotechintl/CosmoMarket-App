@@ -23,7 +23,7 @@ class _NavigationComponentState extends State<NavigationComponent> {
             currentPageIndex = index;
           });
         },
-        backgroundColor: Color(0xFFECF7FB),
+        backgroundColor: const Color(0xFFECF7FB),
         selectedItemColor: Colors.blueAccent, // Set your desired indicator color here
         unselectedItemColor: Colors.grey,
         selectedFontSize: 14.0,
