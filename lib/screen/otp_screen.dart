@@ -1,3 +1,4 @@
+import 'package:cosmomarket/screen/navigation_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:otp_text_field/otp_field.dart';
 import 'package:otp_text_field/style.dart';
@@ -64,16 +65,18 @@ class _OTPScreenState extends State<OTPScreen> {
                       outlineBorderRadius: 15,
                       style: TextStyle(fontSize: 17),
                       onChanged: (pin) {
-                        print("Changed: " + pin);
+                        debugPrint("Changed: " + pin);
                       },
                       onCompleted: (pin) {
-                        print("Completed: " + pin);
+                        debugPrint("Completed: " + pin);
                       }),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(10.0),
                   child: ElevatedButton(
-                      onPressed: _otpConfirm, child: Text("Confirm")),
+                      onPressed: _otpConfirm,
+                      child: const Text("Confirm")
+                  ),
                 )
               ],
             ),
@@ -81,5 +84,7 @@ class _OTPScreenState extends State<OTPScreen> {
         ]));
   }
 
-  void _otpConfirm() {}
+  void _otpConfirm() {
+    Navigator.push(context, MaterialPageRoute(builder: (_) => const NavigationComponent()));
+  }
 }

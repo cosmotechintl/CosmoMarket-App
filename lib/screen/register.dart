@@ -1,4 +1,5 @@
 import 'package:cosmomarket/customWidget/DropDown.dart';
+import 'package:cosmomarket/screen/otp_screen.dart';
 import 'package:datepicker_dropdown/datepicker_dropdown.dart';
 import 'package:datepicker_dropdown/order_format.dart';
 import 'package:flutter/cupertino.dart';
@@ -156,13 +157,16 @@ class _RegisterState extends State<Register> {
 
   void _next() {
     if (_registerFormKey.currentState?.validate() ?? false) {
-      String email = _firstnameController.text;
-      String password = _lastnameController.text;
-      debugPrint("Email: $email, Password: $password");
+      // String email = _firstnameController.text;
+      // String password = _lastnameController.text;
+      // debugPrint("Email: $email, Password: $password");
     }
+    Navigator.push(context, MaterialPageRoute(builder: (_) => RegisterNext()));
   }
 
-  void _login() {}
+  void _login() {
+
+  }
 }
 
 class RegisterNext extends StatefulWidget {
@@ -288,10 +292,7 @@ class _RegisterNextState extends State<RegisterNext> {
                             style: TextStyle(fontWeight: FontWeight.bold),
                           ),
                           SizedBox(
-                            height: MediaQuery.sizeOf(context).width * 0.02,
-                          ),
-                          SizedBox(
-                            height: MediaQuery.sizeOf(context).width * 0.03,
+                            height: MediaQuery.sizeOf(context).width * 0.05,
                           ),
                           DropDown(
                               items: bloodGroups,
@@ -341,7 +342,11 @@ class _RegisterNextState extends State<RegisterNext> {
     );
   }
 
-  void _login() {}
+  void _login() {
 
-  void _create() {}
+  }
+
+  void _create() {
+    Navigator.push(context, MaterialPageRoute(builder: (_) => OTPScreen()));
+  }
 }
