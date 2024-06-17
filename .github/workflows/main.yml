@@ -23,20 +23,22 @@ jobs:
         with:
           flutter-version: '3.22.2'  # Adjust to the latest Flutter version compatible with Dart SDK constraints
 
-      - name: Install dependencies
+      - name: Install Firebase Tools
         run: |
-          flutter pub get
+          Invoke-WebRequest -Uri https://firebase.tools -OutFile firebase-tools.ps1
+          ./firebase-tools.ps1
+
+      - name: Install dependencies
+        run: flutter pub get
 
       - name: Build APK
-        run: |
-          flutter build apk --release
+        run: flutter build apk --release
 
       - name: Upload to Firebase App Distribution
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
         run: |
-          curl -sL https://firebase.tools | bash
-          firebase appdistribution:distribute build/app/outputs/flutter-apk/app-release.apk \
-            --app 1:90796988475:android:b76fb26b516b06900c641e \
-            --release-notes "New release" \
+          firebase appdistribution:distribute build/app/outputs/flutter-apk/app-release.apk `
+            --app 1:90796988475:android:b76fb26b516b06900c641e `
+            --release-notes "New release" `
             --testers "prajwaldahal072@gmail.com"
