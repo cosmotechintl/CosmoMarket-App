@@ -21,13 +21,15 @@ jobs:
       - name: Install Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '2.10.0'  # Adjust to the latest Flutter version
+          flutter-version: '2.10.0'  # Adjust to the latest Flutter version compatible with Dart SDK constraints
 
       - name: Install dependencies
-        run: flutter pub get
+        run: |
+          flutter pub get
 
       - name: Build APK
-        run: flutter build apk --release
+        run: |
+          flutter build apk --release
 
       - name: Upload to Firebase App Distribution
         env:
