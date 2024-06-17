@@ -37,7 +37,7 @@ jobs:
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
         run: |
-          firebase login:ci --token "${FIREBASE_TOKEN}"
+          firebase deploy --token "${FIREBASE_TOKEN}"
 
       - name: Upload to Firebase App Distribution
         env:
