@@ -43,11 +43,11 @@ class _ServicesState extends State<Services> {
     return Card(
       color: Color(0xFFECF7FB),
       child: InkWell(
-        splashColor: const Color(0xFFFFC8B0),
         onTap: (){
           Navigator.push(context,MaterialPageRoute(
               builder: (_)=>const FutsalHomeScreen()
-          ));
+          )
+          );
         },
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
