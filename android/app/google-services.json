@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "90796988475",
+    "project_id": "cosmomarket-9cbbe",
+    "storage_bucket": "cosmomarket-9cbbe.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:90796988475:android:b76fb26b516b06900c641e",
+        "android_client_info": {
+          "package_name": "com.cosmotechintl.cosmomarket"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCf0g6UHU0wvlBX51gInoIiiVIYFHv748M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
