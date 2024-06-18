@@ -77,6 +77,7 @@ class _FutsalHomeScreenState extends State<FutsalHomeScreen> {
                 ],
                 ),
               ),
+              SizedBox(height: 20.0,),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
