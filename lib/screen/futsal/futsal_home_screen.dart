@@ -24,6 +24,7 @@ class _FutsalHomeScreenState extends State<FutsalHomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       appBar: AppBar(
         centerTitle: true,
         title: Text(
@@ -36,105 +37,109 @@ class _FutsalHomeScreenState extends State<FutsalHomeScreen> {
       ),
       body: Padding(
         padding: const EdgeInsets.fromLTRB(10.0,3.0,10.0,10.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Image.asset(
-              "assets/imageRes/futsal.png",
-            ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(5.0, 10.0, 5.0, 0.0),
-              child: Column(
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Image.asset(
+                "assets/imageRes/futsal.png",
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(5.0, 10.0, 5.0, 0.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Text(
+                      "Location",
+                      style: GoogleFonts.inter(
+                          fontSize: 17.0,
+                          fontWeight: FontWeight.w400,
+                          color: const Color(0xFF22577A)),
+                    ),
+                    const SizedBox(
+                      height: 10.0,
+                    ),
+                SearchableDropdown<int>(
+                  searchHintText:"Search Location",
+                  hintText: Text("Select Location"),
+                  items: location.asMap().entries.map((entry) {
+                    int index = entry.key;
+                    String value = entry.value;
+                    return SearchableDropdownMenuItem<int>(
+                      value: index,
+                      child: Text(value),
+                      label: value,
+                    );
+                  }).toList(),
+                ),
+                ],
+                ),
+              ),
+              Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Text(
-                    "Location",
+                    "Session Duration",
                     style: GoogleFonts.inter(
                         fontSize: 17.0,
                         fontWeight: FontWeight.w400,
                         color: const Color(0xFF22577A)),
                   ),
-                  const SizedBox(
-                    height: 10.0,
+                  const SizedBox(height: 10.0),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Expanded(
+                        child: Slider.adaptive(
+                            value: _selectedValue,
+                            label: "${_selectedValue.toInt()} hr",
+                            min: 1.0,
+                            max:8.0,
+                            divisions: 8,
+                            onChanged: (value){
+                              setState(() {
+                                _selectedValue=value;
+                              });
+                            }
+                        ),
+                      ),
+                      Text("${_selectedValue.toInt()} hr",
+                        style: TextStyle(
+                          color:AppTheme.primaryColor,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 15.0
+                        ),
+                      )
+                    ],
                   ),
-              SearchableDropdown<int>(
-                items: location.asMap().entries.map((entry) {
-                  int index = entry.key;
-                  String value = entry.value;
-                  return SearchableDropdownMenuItem<int>(
-                    value: index,
-                    child: Text(value),
-                    label: value,
-                  );
-                }).toList(),
+                  const SizedBox(height: 20.0),
+                  ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xFFD5EDF5),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20.0),
+                          side: const BorderSide(
+                            color: Color(0xFFCADBE0)
+                          )
+                        ),
+                        elevation: 0.0
+                      ),
+                      onPressed:(){
+                        Navigator.push(context, MaterialPageRoute(builder: (_)=>const FutsalHeader()));
+                      },
+                      child: Text(
+                          "Save and Next",
+                        style: GoogleFonts.inter(
+                            fontWeight: FontWeight.w600,
+                            color: const Color(0xFF6993AB)),
+                      ),
+                      )
+                ],
               ),
-              ],
-              ),
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "Session Duration",
-                  style: GoogleFonts.inter(
-                      fontSize: 17.0,
-                      fontWeight: FontWeight.w400,
-                      color: const Color(0xFF22577A)),
-                ),
-                const SizedBox(height: 10.0),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Expanded(
-                      child: Slider.adaptive(
-                          value: _selectedValue,
-                          label: "${_selectedValue.toInt()} hr",
-                          min: 1.0,
-                          max:8.0,
-                          divisions: 8,
-                          onChanged: (value){
-                            setState(() {
-                              _selectedValue=value;
-                            });
-                          }
-                      ),
-                    ),
-                    Text("${_selectedValue.toInt()} hr",
-                      style: TextStyle(
-                        color:AppTheme.primaryColor,
-                        fontWeight: FontWeight.w500,
-                        fontSize: 15.0
-                      ),
-                    )
-                  ],
-                ),
-                const SizedBox(height: 20.0),
-                ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFFD5EDF5),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20.0),
-                        side: const BorderSide(
-                          color: Color(0xFFCADBE0)
-                        )
-                      ),
-                      elevation: 0.0
-                    ),
-                    onPressed:(){
-                      Navigator.push(context, MaterialPageRoute(builder: (_)=>const FutsalHeader()));
-                    },
-                    child: Text(
-                        "Save and Next",
-                      style: GoogleFonts.inter(
-                          fontWeight: FontWeight.w600,
-                          color: const Color(0xFF6993AB)),
-                    ),
-                    )
-              ],
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
