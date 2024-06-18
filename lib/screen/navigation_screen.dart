@@ -1,5 +1,6 @@
 import 'package:cosmomarket/screen/home_screen.dart';
 import 'package:cosmomarket/screen/service_screen.dart';
+import 'package:cosmomarket/theme/Theme.dart';
 import 'package:flutter/material.dart';
 
 class NavigationComponent extends StatefulWidget {
@@ -24,30 +25,35 @@ class _NavigationComponentState extends State<NavigationComponent> {
           });
         },
         backgroundColor: const Color(0xFFECF7FB),
-        selectedItemColor: Colors.blueAccent, // Set your desired indicator color here
+        selectedItemColor:AppTheme.primaryColor, // Set your desired indicator color here
         unselectedItemColor: Colors.grey,
         selectedFontSize: 14.0,
         items: const [
+
           BottomNavigationBarItem(
             icon: Icon(Icons.home_outlined),
             activeIcon: Icon(Icons.home),
             label: 'Home',
           ),
+
           BottomNavigationBarItem(
             icon: Icon(Icons.miscellaneous_services_outlined),
             activeIcon: Icon(Icons.miscellaneous_services),
             label: 'Services',
           ),
+
           BottomNavigationBarItem(
             icon: Icon(Icons.explore_outlined),
             activeIcon: Icon(Icons.explore),
             label: 'Explore',
           ),
+
           BottomNavigationBarItem(
             icon: Icon(Icons.more_vert),
             activeIcon: Icon(Icons.more_vert_rounded),
             label: 'More',
           ),
+
         ],
       ),
       body: createBody(currentPageIndex),

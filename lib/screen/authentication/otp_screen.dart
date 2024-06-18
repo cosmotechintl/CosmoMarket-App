@@ -1,4 +1,5 @@
 import 'package:cosmomarket/screen/navigation_screen.dart';
+import 'package:cosmomarket/theme/Theme.dart';
 import 'package:flutter/material.dart';
 import 'package:otp_text_field/otp_field.dart';
 import 'package:otp_text_field/style.dart';
@@ -20,7 +21,8 @@ class _OTPScreenState extends State<OTPScreen> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-          Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+          Column(mainAxisAlignment: MainAxisAlignment.center,
+          children: [
             Image.asset(
               "assets/logo/cosmotech_logo.png",
               width: MediaQuery.of(context).size.width * 0.5,
@@ -36,20 +38,23 @@ class _OTPScreenState extends State<OTPScreen> {
                 const Text(
                   "OTP",
                   style: TextStyle(
-                      color: Color(0xFF00425A),
+                      color: AppTheme.primaryColor,
                       fontWeight: FontWeight.bold,
                       fontSize: 20.0),
                 ),
                 const Text(
                   "We send you email please check your mail\nand complete OTP code",
-                  style: TextStyle(color: Color(0xFF00425A)),
+                  style: TextStyle(
+                      color: AppTheme.primaryColor
+                  ),
                   textAlign: TextAlign.center,
                 ),
                 const Text(
-                  "Change Address",
+                  "Change Email Address",
                   style: TextStyle(
-                      color: Color(0xFF00425A),
-                      decoration: TextDecoration.underline),
+                      color: AppTheme.primaryColor,
+                      decoration: TextDecoration.underline
+                  ),
                   textAlign: TextAlign.center,
                 ),
                 Padding(
@@ -63,12 +68,12 @@ class _OTPScreenState extends State<OTPScreen> {
                       fieldWidth: 45,
                       fieldStyle: FieldStyle.box,
                       outlineBorderRadius: 15,
-                      style: TextStyle(fontSize: 17),
+                      style: const TextStyle(fontSize: 17),
                       onChanged: (pin) {
-                        debugPrint("Changed: " + pin);
+                        debugPrint("Changed: $pin");
                       },
                       onCompleted: (pin) {
-                        debugPrint("Completed: " + pin);
+                        debugPrint("Completed: $pin");
                       }),
                 ),
                 Padding(

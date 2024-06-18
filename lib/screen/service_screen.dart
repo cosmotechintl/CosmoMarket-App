@@ -1,5 +1,7 @@
 import 'package:cosmomarket/screen/futsal/futsal_home_screen.dart';
+import 'package:cosmomarket/theme/Theme.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Services extends StatefulWidget {
   const Services({super.key});
@@ -29,10 +31,8 @@ class _ServicesState extends State<Services> {
             createServicesCardButton("Restaurant\nServices", Icons.restaurant_menu),
             createServicesCardButton("Shopping\nMart", Icons.shopping_cart_outlined),
             createServicesCardButton("Hotel\nBooking", Icons.local_hotel_outlined),
-            createServicesCardButton("vehicles\nRental", Icons.sports_baseball_outlined),
-            createServicesCardButton("vehicles\nRental", Icons.sports_baseball_outlined),
-            createServicesCardButton("vehicles\nRental", Icons.sports_baseball_outlined),
-            createServicesCardButton("vehicles\nRental", Icons.sports_baseball_outlined),
+            createServicesCardButton("vehicles\nRental", Icons.car_rental),
+            createServicesCardButton("Banquet\nRental", Icons.villa),
           ],
         ),
       ),
@@ -41,7 +41,7 @@ class _ServicesState extends State<Services> {
 
   Widget createServicesCardButton(String name, IconData iconName) {
     return Card(
-      color: Color(0xFFECF7FB),
+      color: AppTheme.serviceButtonColor,
       child: InkWell(
         onTap: (){
           Navigator.push(context,MaterialPageRoute(
@@ -60,7 +60,8 @@ class _ServicesState extends State<Services> {
             Text(
               name,
               textAlign: TextAlign.center,
-              style: TextStyle(
+              style: GoogleFonts.sourceSerif4(
+                color:AppTheme.primaryColor,
                 fontSize: 15.0,
                 fontWeight: FontWeight.bold,
               ),

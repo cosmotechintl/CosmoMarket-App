@@ -1,7 +1,8 @@
-import 'package:cosmomarket/screen/register.dart';
+import 'package:cosmomarket/screen/authentication/register.dart';
 import 'package:flutter/material.dart';
 
-import 'navigation_screen.dart';
+import '/screen/navigation_screen.dart';
+import '../../theme/Theme.dart';
 
 final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
@@ -49,7 +50,7 @@ class _LoginState extends State<Login> {
                 ),
               ],
             ),
-            SizedBox(height:20),
+            const SizedBox(height:20),
             Center(
               child: Form(
                 key: _formKey,
@@ -68,15 +69,6 @@ class _LoginState extends State<Login> {
                         focusNode: _emailFocus,
                         decoration: const InputDecoration(
                           labelText: "Your Email",
-                          labelStyle: TextStyle(
-                            color: Color(0xFF00425A)
-                          ),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(20.0)),
-                            borderSide: BorderSide(
-                              color: Color(0xFFA9C5CF)
-                            )
-                          ),
                           contentPadding: EdgeInsets.all(20.0),
                         ),
                         keyboardType: TextInputType.emailAddress,
@@ -103,17 +95,12 @@ class _LoginState extends State<Login> {
                           .size
                           .width * 0.95,
                       child: TextFormField(
+                        autovalidateMode: AutovalidateMode.onUserInteraction,
                         controller: _passwordController,
                         focusNode: _passwordFocus,
                         obscureText: true,
                         decoration: const InputDecoration(
                           labelText: "Your Password",
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(20.0)),
-                            borderSide: BorderSide(
-                              color: Color(0xFFA9C5CF)
-                            )
-                          ),
                           contentPadding: EdgeInsets.all(20.0),
                         ),
                         validator: (value) {
@@ -146,7 +133,7 @@ class _LoginState extends State<Login> {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 30.0
             ),
             const Text(
@@ -155,7 +142,7 @@ class _LoginState extends State<Login> {
                 color: Color(0xFF548394)
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height:30.0
             ),
             Column(
@@ -209,7 +196,7 @@ class _LoginState extends State<Login> {
            InkWell(
              onTap:_register,
              child: RichText(
-               text:TextSpan(
+               text:const TextSpan(
                  text: "Don't have an account? ", // Default style
                  style: TextStyle(
                      fontSize: 14.0,
@@ -242,7 +229,7 @@ class _LoginState extends State<Login> {
     //   debugPrint("Email: $email, Password: $password");
     // }
     Navigator.push(context,
-      MaterialPageRoute(builder: (_)=>NavigationComponent())
+      MaterialPageRoute(builder: (_)=>const NavigationComponent())
     );
   }
 
@@ -250,9 +237,9 @@ class _LoginState extends State<Login> {
   Widget builtSocialMediaButton(String img){
       return InkWell(
           child: Card(
-              color:const Color(0xFFE1F1F7),
+              color:AppTheme.bgColor,
               child:Padding(
-                padding: EdgeInsets.all(9.0),
+                padding: const EdgeInsets.all(9.0),
                 child: Image.asset(
                   "assets/logo/$img",
                   height: MediaQuery.of(context).size.height*0.05,
@@ -264,8 +251,9 @@ class _LoginState extends State<Login> {
   } 
 
   void _register() {
-      Navigator.push(context, MaterialPageRoute(
-          builder:(_)=>Register()
+      Navigator.push(context,
+          MaterialPageRoute(
+          builder:(_)=>const Register()
       )
       );
   }

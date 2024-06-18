@@ -1,11 +1,11 @@
-import 'package:cosmomarket/customWidget/DropDown.dart';
-import 'package:cosmomarket/screen/otp_screen.dart';
+import 'package:cosmomarket/customWidget/dropdown.dart';
 import 'package:datepicker_dropdown/datepicker_dropdown.dart';
 import 'package:datepicker_dropdown/order_format.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
-
-import '../customWidget/customTextField.dart';
+import '../../customWidget/custom_textfield.dart';
+import 'login.dart';
+import 'otp_screen.dart';
 
 class Register extends StatefulWidget {
   const Register({super.key});
@@ -32,140 +32,166 @@ class _RegisterState extends State<Register> {
     return Scaffold(
       resizeToAvoidBottomInset: true,
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Column(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.only(top:15.0),
+            child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Image.asset(
-                  "assets/logo/cosmotech_logo.png",
-                  width: MediaQuery.of(context).size.width * 0.5,
-                  height: MediaQuery.of(context).size.height * 0.1,
-                ),
-                Image.asset(
-                  "assets/logo/img.png",
-                  width: MediaQuery.of(context).size.width * 0.75,
-                  height: MediaQuery.of(context).size.height * 0.1,
-                ),
-                SizedBox(height: 20),
-                Form(
-                    key: _registerFormKey,
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Column(
-                        children: [
-                          Row(
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.asset(
+                      "assets/logo/cosmotech_logo.png",
+                      width: MediaQuery.of(context).size.width * 0.5,
+                      height: MediaQuery.of(context).size.height * 0.1,
+                    ),
+                    Image.asset(
+                      "assets/logo/img.png",
+                      width: MediaQuery.of(context).size.width * 0.75,
+                      height: MediaQuery.of(context).size.height * 0.1,
+                    ),
+                    const SizedBox(height: 50),
+                    Form(
+                        key: _registerFormKey,
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Column(
                             children: [
-                              Expanded(
-                                  child: CustomTextField.create(
-                                      label: 'First Name',
-                                      controller: _firstnameController,
-                                      changeFocus: _lastnameFocus,
-                                      focus: _firstnameFocus,
-                                      context: context)),
-                              SizedBox(
-                                width: MediaQuery.of(context).size.width * 0.05,
+                              Row(
+                                children: [
+                                  Expanded(
+                                      child: CustomTextField.create(
+                                          label: 'First Name',
+                                          controller: _firstnameController,
+                                          changeFocus: _lastnameFocus,
+                                          focus: _firstnameFocus,
+                                          context: context
+                                      )
+                                  ),
+                                  SizedBox(
+                                    width: MediaQuery.of(context).size.width * 0.05,
+                                  ),
+                                  Expanded(
+                                      child: CustomTextField.create(
+                                          label: 'Last Name',
+                                          controller: _lastnameController,
+                                          changeFocus: _mblFocus,
+                                          focus: _lastnameFocus,
+                                          context: context)),
+                                ],
                               ),
-                              Expanded(
-                                  child: CustomTextField.create(
-                                      label: 'Last Name',
-                                      controller: _lastnameController,
-                                      changeFocus: _lastnameFocus,
-                                      focus: _firstnameFocus,
-                                      context: context)),
+                              CustomTextField.create(
+                                  label: 'Mobile Number',
+                                  controller: _mblNumberController,
+                                  changeFocus: _emailFocus,
+                                  inputType: TextInputType.number,
+                                  focus: _mblFocus,
+                                  context: context
+                              ),
+
+                              CustomTextField.create(
+                                  label: 'Email',
+                                  controller: _emailController,
+                                  changeFocus: _emailFocus,
+                                  inputType: TextInputType.emailAddress,
+                                  validator: (value){
+                                      if (value == null || value.isEmpty) {
+                                      return 'Please enter your email';
+                                      }
+                                      if (!EmailValidator.validate(value)) {
+                                      return 'Enter a valid email address';
+                                      }
+                                      return null;
+                                  },
+                                  focus: _emailFocus,
+                                  context: context
+                              ),
+                              SizedBox(
+                                  height:MediaQuery.of(context).size.height * 0.03
+                              ),
+                              TextFormField(
+                                controller: _passwordController,
+                                focusNode: _passwordFocus,
+                                obscureText: true,
+                                decoration: const InputDecoration(
+                                  label:Text("Password")
+                                ),
+                                validator: (value) {
+                                  if (value == null || value.isEmpty) {
+                                    return 'password is empty';
+                                  }
+                                  return null;
+                                },
+                                onEditingComplete: () {
+                                  _next();
+                                },
+                              ),
+                              SizedBox(
+                                height: MediaQuery.sizeOf(context).width * 0.07,
+                              ),
+                              ElevatedButton(
+                                  onPressed: _next,
+                                  child: const Text('Next')
+                              ),
                             ],
                           ),
-                          CustomTextField.create(
-                              label: 'Mobile Number',
-                              controller: _mblNumberController,
-                              changeFocus: _emailFocus,
-                              focus: _mblFocus,
-                              context: context),
-                          CustomTextField.create(
-                              label: 'Email',
-                              controller: _emailController,
-                              changeFocus: _emailFocus,
-                              focus: _emailFocus,
-                              context: context),
-                          SizedBox(
-                              height:
-                                  MediaQuery.of(context).size.height * 0.03),
-                          TextFormField(
-                            controller: _passwordController,
-                            focusNode: _passwordFocus,
-                            decoration: InputDecoration(
-                              labelText: "Password",
-                              border: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20.0)),
-                                  borderSide:
-                                      BorderSide(color: Color(0xFFA9C5CF))),
-                              contentPadding: EdgeInsets.all(15.0),
-                            ),
-                            validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                return 'password is empty';
-                              }
-                              return null;
-                            },
-                            onEditingComplete: () {
-                              _next();
-                            },
-                          ),
-                          SizedBox(
-                            height: MediaQuery.sizeOf(context).width * 0.07,
-                          ),
-                          ElevatedButton(
-                              onPressed: _next, child: const Text('next')),
-                        ],
-                      ),
-                    ))
-              ],
-            ),
-            SizedBox(
-              height: MediaQuery.sizeOf(context).width * 0.04,
-            ),
-            GestureDetector(
-              onTap: _login,
-              child: RichText(
-                text: TextSpan(
-                  text: "Already have an account? ", // Default style
-                  style: TextStyle(
-                    fontSize: 14.0,
-                    color: Color(0xFFA0A8AB),
-                  ),
-                  children: <TextSpan>[
-                    TextSpan(
-                      text: 'login',
-                      style: TextStyle(
-                          fontSize: 15.0,
-                          color: Color(0xFF22577A),
-                          fontWeight: FontWeight.bold,
-                          decoration: TextDecoration.underline),
-                    )
+                        ))
                   ],
                 ),
-              ),
-            )
-          ],
+                SizedBox(
+                  height: MediaQuery.sizeOf(context).width * 0.04,
+                ),
+                GestureDetector(
+                  onTap: _login,
+                  child: RichText(
+                    text: const TextSpan(
+                      text: "Already have an account?", // Default style
+                      style: TextStyle(
+                        fontSize: 14.0,
+                        color: Color(0xFFA0A8AB),
+                      ),
+                      children: <TextSpan>[
+                        TextSpan(
+                          text: 'Login',
+                          style: TextStyle(
+                              fontSize: 15.0,
+                              color: Color(0xFF22577A),
+                              fontWeight: FontWeight.bold,
+                              decoration: TextDecoration.underline
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                )
+              ],
+            ),
+          ),
         ),
       ),
     );
   }
 
   void _next() {
-    if (_registerFormKey.currentState?.validate() ?? false) {
-      // String email = _firstnameController.text;
-      // String password = _lastnameController.text;
-      // debugPrint("Email: $email, Password: $password");
-    }
-    Navigator.push(context, MaterialPageRoute(builder: (_) => RegisterNext()));
+    // if (_registerFormKey.currentState?.validate() ?? false) {
+    //   // String email = _firstnameController.text;
+    //   // String password = _lastnameController.text;
+    //   // debugPrint("Email: $email, Password: $password");
+    // }
+    Navigator.push(
+        context,
+        MaterialPageRoute(builder: (_) => const RegisterNext()
+        )
+    );
   }
 
   void _login() {
-
+    Navigator.push(
+        context,
+        MaterialPageRoute(builder: (_) => const Login())
+    );
   }
 }
 
@@ -224,7 +250,7 @@ class _RegisterNextState extends State<RegisterNext> {
                   width: MediaQuery.of(context).size.width * 0.75,
                   height: MediaQuery.of(context).size.height * 0.1,
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 Form(
                     key: _registerNextFormKey,
                     child: Padding(
@@ -238,15 +264,15 @@ class _RegisterNextState extends State<RegisterNext> {
                           DropdownDatePicker(
                             locale: "en",
                             dateformatorder: OrderFormat.YMD, // default is myd
-                            inputDecoration: InputDecoration(
-                                enabledBorder: const OutlineInputBorder(
+                            inputDecoration: const InputDecoration(
+                                enabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.all(Radius.circular(20.0)),
                                 borderSide: BorderSide(
                                     color: Color(0xFFA9C5CF)
                                 )
                                 ),
                                 helperText: '',
-                                contentPadding: const EdgeInsets.all(8.0),
+                                contentPadding: EdgeInsets.all(8.0),
                             ),
                             isFormValidator: true,
                             startYear: 1900,
@@ -271,7 +297,7 @@ class _RegisterNextState extends State<RegisterNext> {
                           SizedBox(
                             height: MediaQuery.sizeOf(context).width * 0.05,
                           ),
-                          Text(
+                          const Text(
                             "Select Gender",
                             style: TextStyle(fontWeight: FontWeight.bold),
                           ),
@@ -283,11 +309,11 @@ class _RegisterNextState extends State<RegisterNext> {
                               onChanged: (String? value) {
                                 selectedGender = value;
                               },
-                              hintText: "Select gender"),
+                              hintText: "Gender"),
                           SizedBox(
                             height: MediaQuery.sizeOf(context).width * 0.05,
                           ),
-                          Text(
+                          const Text(
                             "Select Blood Group",
                             style: TextStyle(fontWeight: FontWeight.bold),
                           ),
@@ -299,7 +325,7 @@ class _RegisterNextState extends State<RegisterNext> {
                               onChanged: (String? value) {
                                 selectedBloodGroup = value;
                               },
-                              hintText: "Select Blood Group"),
+                              hintText: "Blood Group"),
                           SizedBox(
                             height: MediaQuery.sizeOf(context).width * 0.05,
                           ),
@@ -317,7 +343,7 @@ class _RegisterNextState extends State<RegisterNext> {
             GestureDetector(
               onTap: _login,
               child: RichText(
-                text: TextSpan(
+                text: const TextSpan(
                   text: "Already have an account? ", // Default style
                   style: TextStyle(
                     fontSize: 14.0,
@@ -347,6 +373,11 @@ class _RegisterNextState extends State<RegisterNext> {
   }
 
   void _create() {
-    Navigator.push(context, MaterialPageRoute(builder: (_) => OTPScreen()));
+    if (_registerNextFormKey.currentState?.validate() ?? false) {
+      // String email = _firstnameController.text;
+      // String password = _lastnameController.text;
+      // debugPrint("Email: $email, Password: $password");
+      Navigator.push(context, MaterialPageRoute(builder: (_) => const OTPScreen()));
+    }
   }
 }

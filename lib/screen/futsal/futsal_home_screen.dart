@@ -1,11 +1,13 @@
-import 'package:cosmomarket/screen/futsal/futsal_list.dart';
+import 'package:cosmomarket/screen/futsal/futsal_main_screen.dart';
+import 'package:cosmomarket/theme/Theme.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:searchable_paginated_dropdown/searchable_paginated_dropdown.dart';
 
-import '../../customWidget/DropDown.dart';
+import '../../customWidget/dropdown.dart';
 
 class FutsalHomeScreen extends StatefulWidget {
-  const FutsalHomeScreen({Key? key}) : super(key: key);
+  const FutsalHomeScreen({super.key});
 
   @override
   _FutsalHomeScreenState createState() => _FutsalHomeScreenState();
@@ -16,6 +18,8 @@ class _FutsalHomeScreenState extends State<FutsalHomeScreen> {
   List<int> hrs=[1,2,3];
   String? _selectedLocation;
   int optionSelect = 1;
+
+  double _selectedValue=1.0;
 
   @override
   Widget build(BuildContext context) {
@@ -55,16 +59,18 @@ class _FutsalHomeScreenState extends State<FutsalHomeScreen> {
                   const SizedBox(
                     height: 10.0,
                   ),
-                  DropDown(
-                    items: location,
-                    onChanged: (String? value) {
-                      setState(() {
-                        _selectedLocation = value;
-                      });
-                    },
-                    hintText: 'Select Location',
-                  ),
-                ],
+              SearchableDropdown<int>(
+                items: location.asMap().entries.map((entry) {
+                  int index = entry.key;
+                  String value = entry.value;
+                  return SearchableDropdownMenuItem<int>(
+                    value: index,
+                    child: Text(value),
+                    label: value,
+                  );
+                }).toList(),
+              ),
+              ],
               ),
             ),
             Column(
@@ -77,39 +83,47 @@ class _FutsalHomeScreenState extends State<FutsalHomeScreen> {
                       fontWeight: FontWeight.w400,
                       color: const Color(0xFF22577A)),
                 ),
-                SizedBox(height: 10.0),
+                const SizedBox(height: 10.0),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: hrs.map((int choice) {
-                    return ChoiceChip(
-                        backgroundColor: const Color(0xFFD3E3EB),
-                        label: Padding(
-                          padding: const EdgeInsets.symmetric(vertical:5.0,horizontal: 20.0),
-                          child: Text("$choice hr"),
-                        ),
-                        selected: optionSelect == choice,
-                        onSelected: (isSelected) {
-                          setState(() {
-                            if (isSelected)
-                              optionSelect = choice;
-                          });
-                        });
-                  }).toList(),
+                  children: [
+                    Expanded(
+                      child: Slider.adaptive(
+                          value: _selectedValue,
+                          label: "${_selectedValue.toInt()} hr",
+                          min: 1.0,
+                          max:8.0,
+                          divisions: 8,
+                          onChanged: (value){
+                            setState(() {
+                              _selectedValue=value;
+                            });
+                          }
+                      ),
+                    ),
+                    Text("${_selectedValue.toInt()} hr",
+                      style: TextStyle(
+                        color:AppTheme.primaryColor,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 15.0
+                      ),
+                    )
+                  ],
                 ),
-                SizedBox(height: 20.0),
+                const SizedBox(height: 20.0),
                 ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xFFD5EDF5),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20.0),
-                        side: BorderSide(
-                          color: const Color(0xFFCADBE0)
+                        side: const BorderSide(
+                          color: Color(0xFFCADBE0)
                         )
                       ),
                       elevation: 0.0
                     ),
                     onPressed:(){
-                      Navigator.push(context, MaterialPageRoute(builder: (_)=>FutsalList()));
+                      Navigator.push(context, MaterialPageRoute(builder: (_)=>const FutsalHeader()));
                     },
                     child: Text(
                         "Save and Next",
