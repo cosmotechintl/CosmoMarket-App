@@ -3,8 +3,10 @@ import 'package:datepicker_dropdown/datepicker_dropdown.dart';
 import 'package:datepicker_dropdown/order_format.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../../customWidget/custom_textfield.dart';
+import '../../theme/Theme.dart';
 import 'login.dart';
 import 'otp_screen.dart';
 
@@ -259,6 +261,17 @@ class _RegisterNextState extends State<RegisterNext> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
+                          Text(
+                            "Select DOB:",
+                            style:GoogleFonts.inter(
+                            fontSize: 16.0,
+                            fontWeight: FontWeight.w700,
+                            color:AppTheme.primaryColor
+                          )
+                          ),
+                          SizedBox(
+                            height:8.0
+                          ),
                           DropdownDatePicker(
                             locale: "en",
                             dateformatorder: OrderFormat.YMD, // default is myd
