@@ -1,7 +1,7 @@
 import 'package:cosmomarket/customWidget/custom_textfield.dart';
 import 'package:flutter/material.dart';
 
-import '../theme/Theme.dart';
+import '../theme/theme.dart';
 
 class DropDown extends StatefulWidget {
   final List<String> items;
@@ -54,7 +54,8 @@ class _DropDownState extends State<DropDown> {
         });
         widget.onChanged(value);
       },
-      borderRadius: BorderRadius.all(Radius.circular(20.0))
+      borderRadius:
+      const BorderRadius.all(Radius.circular(20.0))
     );
   }
 }
@@ -64,7 +65,7 @@ class DropDownWithSearchBar extends StatefulWidget {
   final ValueChanged<String?> onChanged;
   final String hintText;
 
-  DropDownWithSearchBar({
+  const DropDownWithSearchBar({
     Key? key,
     required this.items,
     required this.onChanged,
@@ -118,7 +119,7 @@ class _DropDownWithSearchBarState extends State<DropDownWithSearchBar> {
               child: Text(value),
             ),
           );
-        }).toList(),
+        }),
       ],
       validator: (value) {
         if (value == null || value.isEmpty) {
@@ -132,7 +133,7 @@ class _DropDownWithSearchBarState extends State<DropDownWithSearchBar> {
         });
         widget.onChanged(value);
       },
-      borderRadius: BorderRadius.all(Radius.circular(20.0)),
+      borderRadius: const BorderRadius.all(Radius.circular(20.0)),
     );
   }
 }

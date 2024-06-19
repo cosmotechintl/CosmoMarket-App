@@ -1,5 +1,5 @@
 import 'package:cosmomarket/screen/navigation_screen.dart';
-import 'package:cosmomarket/theme/Theme.dart';
+import 'package:cosmomarket/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:otp_text_field/otp_field.dart';
 import 'package:otp_text_field/style.dart';

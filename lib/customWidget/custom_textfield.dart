@@ -6,8 +6,10 @@ class CustomTextField {
     required FocusNode focus,
     required FocusNode? changeFocus,
     required BuildContext context,
+    bool obscureText=false,
     TextInputType inputType = TextInputType.text,
     String? Function(String?)? validator,
+    void Function()? onEditingComplete
   }) {
     return Column(
       children: [
@@ -16,6 +18,7 @@ class CustomTextField {
           autovalidateMode: AutovalidateMode.onUserInteraction,
           controller: controller,
           focusNode: focus,
+          obscureText: obscureText,
           keyboardType: inputType,
           decoration: InputDecoration(
             labelText: label,
@@ -27,7 +30,7 @@ class CustomTextField {
                 }
                 return null;
               },
-          onEditingComplete: () {
+          onEditingComplete: onEditingComplete ?? () {
             if (changeFocus != null) {
               FocusScope.of(context).requestFocus(changeFocus);
             }

@@ -1,5 +1,5 @@
 import 'package:cosmomarket/screen/futsal/futsal_home_screen.dart';
-import 'package:cosmomarket/theme/Theme.dart';
+import 'package:cosmomarket/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -25,7 +25,7 @@ class _ServicesState extends State<Services> {
           maxCrossAxisExtent: 150,
           mainAxisSpacing: 10,
           crossAxisSpacing: 10,
-          padding: EdgeInsets.all(10),
+          padding: const EdgeInsets.all(10),
           children: [
             createServicesCardButton("Futsal\nRental", Icons.sports_baseball_outlined),
             createServicesCardButton("Restaurant\nServices", Icons.restaurant_menu),
@@ -56,7 +56,7 @@ class _ServicesState extends State<Services> {
               iconName,
               size: 44.0,
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Text(
               name,
               textAlign: TextAlign.center,

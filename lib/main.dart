@@ -1,4 +1,4 @@
-import 'package:cosmomarket/theme/Theme.dart';
+import 'package:cosmomarket/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'screen/authentication/login.dart';
 void main() async {

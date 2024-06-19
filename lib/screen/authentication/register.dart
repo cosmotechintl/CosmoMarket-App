@@ -3,6 +3,7 @@ import 'package:datepicker_dropdown/datepicker_dropdown.dart';
 import 'package:datepicker_dropdown/order_format.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
+
 import '../../customWidget/custom_textfield.dart';
 import 'login.dart';
 import 'otp_screen.dart';
@@ -258,9 +259,6 @@ class _RegisterNextState extends State<RegisterNext> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Text("Select your date of birth",
-                                      style: TextStyle(fontWeight: FontWeight.bold)
-                                  ),
                           DropdownDatePicker(
                             locale: "en",
                             dateformatorder: OrderFormat.YMD, // default is myd
@@ -272,7 +270,7 @@ class _RegisterNextState extends State<RegisterNext> {
                                 )
                                 ),
                                 helperText: '',
-                                contentPadding: EdgeInsets.all(8.0),
+                                contentPadding: EdgeInsets.all(10.0),
                             ),
                             isFormValidator: true,
                             startYear: 1900,
@@ -295,28 +293,14 @@ class _RegisterNextState extends State<RegisterNext> {
                             }
                           ),
                           SizedBox(
-                            height: MediaQuery.sizeOf(context).width * 0.05,
-                          ),
-                          const Text(
-                            "Select Gender",
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                          SizedBox(
-                            height: MediaQuery.sizeOf(context).width * 0.05,
+                            height: MediaQuery.sizeOf(context).width * 0.02,
                           ),
                           DropDown(
                               items: gender,
                               onChanged: (String? value) {
                                 selectedGender = value;
                               },
-                              hintText: "Gender"),
-                          SizedBox(
-                            height: MediaQuery.sizeOf(context).width * 0.05,
-                          ),
-                          const Text(
-                            "Select Blood Group",
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                          ),
+                              hintText: "Select Gender"),
                           SizedBox(
                             height: MediaQuery.sizeOf(context).width * 0.05,
                           ),
@@ -325,7 +309,7 @@ class _RegisterNextState extends State<RegisterNext> {
                               onChanged: (String? value) {
                                 selectedBloodGroup = value;
                               },
-                              hintText: "Blood Group"),
+                              hintText: "Select Blood Group"),
                           SizedBox(
                             height: MediaQuery.sizeOf(context).width * 0.05,
                           ),

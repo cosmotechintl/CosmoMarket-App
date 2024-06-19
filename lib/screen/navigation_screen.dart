@@ -1,6 +1,6 @@
 import 'package:cosmomarket/screen/home_screen.dart';
 import 'package:cosmomarket/screen/service_screen.dart';
-import 'package:cosmomarket/theme/Theme.dart';
+import 'package:cosmomarket/theme/theme.dart';
 import 'package:flutter/material.dart';
 
 class NavigationComponent extends StatefulWidget {
@@ -63,15 +63,15 @@ class _NavigationComponentState extends State<NavigationComponent> {
   Widget createBody(int currentPageIndex) {
     switch (currentPageIndex) {
       case 0:
-        return Home();
+        return const Home();
       case 1:
-        return Services();
+        return const Services();
       // case 2:
       //   return Explore(); // Assuming there is an Explore widget
       // case 3:
       //   return More(); // Assuming there is a More widget
       default:
-        return Home();
+        return const Home();
     }
   }
 }

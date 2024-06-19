@@ -2,7 +2,7 @@ import 'package:cosmomarket/screen/authentication/register.dart';
 import 'package:flutter/material.dart';
 
 import '/screen/navigation_screen.dart';
-import '../../theme/Theme.dart';
+import '../../theme/theme.dart';
 
 final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
@@ -54,7 +54,6 @@ class _LoginState extends State<Login> {
             Center(
               child: Form(
                 key: _formKey,
-                autovalidateMode: AutovalidateMode.onUserInteraction,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -67,6 +66,7 @@ class _LoginState extends State<Login> {
                       child: TextFormField(
                         controller: _emailController,
                         focusNode: _emailFocus,
+                        autovalidateMode: AutovalidateMode.onUserInteraction,
                         decoration: const InputDecoration(
                           labelText: "Your Email",
                           contentPadding: EdgeInsets.all(20.0),
@@ -95,9 +95,9 @@ class _LoginState extends State<Login> {
                           .size
                           .width * 0.95,
                       child: TextFormField(
-                        autovalidateMode: AutovalidateMode.onUserInteraction,
                         controller: _passwordController,
                         focusNode: _passwordFocus,
+                        autovalidateMode: AutovalidateMode.onUserInteraction,
                         obscureText: true,
                         decoration: const InputDecoration(
                           labelText: "Your Password",

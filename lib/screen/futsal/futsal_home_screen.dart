@@ -1,10 +1,9 @@
-import 'package:cosmomarket/screen/futsal/futsal_main_screen.dart';
-import 'package:cosmomarket/theme/Theme.dart';
+import 'package:cosmomarket/screen/futsal/futsal_list.dart';
+import 'package:cosmomarket/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:searchable_paginated_dropdown/searchable_paginated_dropdown.dart';
 
-import '../../customWidget/dropdown.dart';
 
 class FutsalHomeScreen extends StatefulWidget {
   const FutsalHomeScreen({super.key});
@@ -63,7 +62,12 @@ class _FutsalHomeScreenState extends State<FutsalHomeScreen> {
                     ),
                 SearchableDropdown<int>(
                   searchHintText:"Search Location",
-                  hintText: Text("Select Location"),
+                  hintText: const Text(
+                      "Select Location",
+                    style: TextStyle(
+                      color:AppTheme.primaryColor
+                    ),
+                  ),
                   items: location.asMap().entries.map((entry) {
                     int index = entry.key;
                     String value = entry.value;
@@ -77,7 +81,7 @@ class _FutsalHomeScreenState extends State<FutsalHomeScreen> {
                 ],
                 ),
               ),
-              SizedBox(height: 20.0,),
+              const SizedBox(height: 20.0,),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -107,7 +111,7 @@ class _FutsalHomeScreenState extends State<FutsalHomeScreen> {
                         ),
                       ),
                       Text("${_selectedValue.toInt()} hr",
-                        style: TextStyle(
+                        style: const TextStyle(
                           color:AppTheme.primaryColor,
                           fontWeight: FontWeight.w500,
                           fontSize: 15.0

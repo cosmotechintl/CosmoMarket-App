@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 
 class AppTheme {
   static const Color bgColor=Color(0xFFE1F1F7);
-  static const Color primaryColor = Color(0xFF00425A);
+  static const Color primaryColor =Color(0xFF00425A);
   static const Color serviceButtonColor = Color(0xFFECF7FB);
   static const Color textformfieldBorderColor = Color(0xFFA9C5CF);
+  static const Color locationColor=Colors.red;
+  static const Color accentColor=Color(0xFFD3E3EB);
+  static const Color secondaryTextColor=Color(0xFF8e9497);
   static ThemeData lightThemeData(BuildContext context) {
     return ThemeData(
         appBarTheme: const AppBarTheme(
@@ -39,7 +42,7 @@ class AppTheme {
         iconTheme: const IconThemeData(
             color: primaryColor
         ),
-      inputDecorationTheme: InputDecorationTheme(
+      inputDecorationTheme: const InputDecorationTheme(
           labelStyle: TextStyle(
               color: AppTheme.primaryColor
           ),

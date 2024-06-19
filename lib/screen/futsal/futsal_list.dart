@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:from_to_time_picker/from_to_time_picker.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:intl/intl.dart';
-import '../../theme/Theme.dart';
+import "package:intl/intl.dart" show DateFormat;
+import '../../theme/theme.dart';
+import 'futsal_view.dart';
 
 class FutsalHeader extends StatefulWidget {
   const FutsalHeader({super.key});
@@ -32,7 +33,7 @@ class _FutsalHeaderState extends State<FutsalHeader> {
                   onPressed: () {
                     Navigator.pop(context);
                   },
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.arrow_back,
                     size: 30.0,
                   ),
@@ -53,7 +54,7 @@ class _FutsalHeaderState extends State<FutsalHeader> {
                             padding: const EdgeInsets.all(10.0),
                             child: DropdownButton<String>(
                               elevation: 0,
-                              underline: SizedBox.shrink(),
+                              underline: const SizedBox.shrink(),
                               value: _selectedLocation,
                               hint: createCustomText(
                                   text: "Tinkune",
@@ -91,7 +92,7 @@ class _FutsalHeaderState extends State<FutsalHeader> {
                         width: 100, // Set the desired width
                         child: DropdownButton<String>(
                           elevation: 0,
-                          underline: SizedBox.shrink(),
+                          underline: const SizedBox.shrink(),
                           value: _selectedSortBy,
                           hint: createCustomText(text: "Sort By"),
                           isExpanded: true,
@@ -103,10 +104,6 @@ class _FutsalHeaderState extends State<FutsalHeader> {
                             DropdownMenuItem(
                               value: "cheapest",
                               child: Text("Cheapest"),
-                            ),
-                            DropdownMenuItem(
-                              value: "nearest_and_cheapest",
-                              child: Text("Nearest and Cheapest"),
                             ),
                           ],
                           onChanged: (String? newValue) {
@@ -124,62 +121,60 @@ class _FutsalHeaderState extends State<FutsalHeader> {
           ),
         ),
       ),
-      body: SingleChildScrollView (
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 20.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  IconButton(
-                    onPressed: () {
-                      setState(() {
-                        _selectedDate=_selectedDate.subtract(Duration(days: 1));
-                      });
-                    },
-                    icon: const Icon(
-                      Icons.arrow_back_ios,
-                      size: 24.0,
-                      color: AppTheme.primaryColor,
-                    ),
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(top: 20.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                IconButton(
+                  onPressed: () {
+                    setState(() {
+                      _selectedDate=_selectedDate.subtract(const Duration(days: 1));
+                    });
+                  },
+                  icon: const Icon(
+                    Icons.arrow_back_ios,
+                    size: 24.0,
+                    color: AppTheme.primaryColor,
                   ),
-                  GestureDetector(
-                    onTap: () {
-                      showDatePickerDialog(context);
-                    },
-                    child: createCustomText(
-                      text: DateFormat('EEE,yyyy-MMM-dd').format(_selectedDate),
-                      fontWeight: FontWeight.w400,
-                    ),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    showDatePickerDialog(context);
+                  },
+                  child: createCustomText(
+                    text: DateFormat('EEE,yyyy-MMM-dd').format(_selectedDate),
+                    fontWeight: FontWeight.w400,
                   ),
-                  IconButton(
-                    onPressed: () {
-                      setState(() {
-                        _selectedDate=_selectedDate.add(Duration(days: 1));
-                      });
-                    },
-                    icon: const Icon(
-                      Icons.arrow_forward_ios,
-                      size: 24.0,
-                      color: AppTheme.primaryColor,
-                    ),
+                ),
+                IconButton(
+                  onPressed: () {
+                    setState(() {
+                      _selectedDate=_selectedDate.add(const Duration(days: 1));
+                    });
+                  },
+                  icon: const Icon(
+                    Icons.arrow_forward_ios,
+                    size: 24.0,
+                    color: AppTheme.primaryColor,
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: ElevatedButton(
-                onPressed: () {
-                  showTimeRangePicker12Hour(context);
-                },
-                child: Text(_slotSelected),
-              ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ElevatedButton(
+              onPressed: () {
+                showTimeRangePicker12Hour(context);
+              },
+              child: Text(_slotSelected),
             ),
-        
-          ],
-        ),
+          ),
+          const Expanded(child: FutsalView())
+        ],
       ),
     );
   }
@@ -233,6 +228,7 @@ class _FutsalHeaderState extends State<FutsalHeader> {
   }
 
   String formatHour(TimeOfDay time) {
+
     int hour = time.hour;
     String period = hour >= 12 ? 'pm' : 'am';
 
@@ -243,9 +239,11 @@ class _FutsalHeaderState extends State<FutsalHeader> {
     }
 
     return '$hour $period';
+
   }
 
   void showDatePickerDialog(BuildContext context) async {
+
     DateTime? picked = await showDatePicker(
       context: context,
       initialDate: _selectedDate,
@@ -258,5 +256,6 @@ class _FutsalHeaderState extends State<FutsalHeader> {
         _selectedDate = picked;
       });
     }
+
   }
 }
