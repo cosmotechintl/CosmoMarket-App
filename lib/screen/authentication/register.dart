@@ -4,7 +4,6 @@ import 'package:datepicker_dropdown/order_format.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import '../../customWidget/custom_textfield.dart';
 import '../../theme/Theme.dart';
 import 'login.dart';
