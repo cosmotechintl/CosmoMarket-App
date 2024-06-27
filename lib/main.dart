@@ -1,6 +1,6 @@
-import 'package:cosmomarket/theme/theme.dart';
+import 'package:cosmomarket/common/styles/theme.dart';
+import 'package:cosmomarket/features/auth/screen/login.dart';
 import 'package:flutter/material.dart';
-import 'screen/authentication/login.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
