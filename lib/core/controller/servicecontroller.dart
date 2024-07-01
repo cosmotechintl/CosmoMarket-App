@@ -21,7 +21,7 @@ class ServiceController {
     ServiceButtonModel(
       services: "Shopping\nMart",
       icon: Icons.shopping_cart_outlined,
-      routeName: RouteName.FUTSAL,
+      routeName: RouteName.MART,
     ),
 
     ServiceButtonModel(

@@ -27,11 +27,11 @@ class PriceSection extends StatelessWidget {
                   children: [
                     Text(
                       "Price",
-                      style: AppTheme.textStyle(colors: Color(0xFFE7EFF2)),
+                      style: AppTheme.textStyle(colors: const Color(0xFFE7EFF2)),
                     ),
                     Text(
                       price.toString(),
-                      style: AppTheme.textStyle(colors: Color(0xFFE7EFF2))
+                      style: AppTheme.textStyle(colors: const Color(0xFFE7EFF2))
                     ),
                   ],
                 ),
@@ -40,11 +40,11 @@ class PriceSection extends StatelessWidget {
                   children: [
                     Text(
                       "Discount",
-                      style: AppTheme.textStyle(colors:Color(0xFF9FC1CE)),
+                      style: AppTheme.textStyle(colors:const Color(0xFF9FC1CE)),
                     ),
                     Text(
                       discount.toString(),
-                      style: AppTheme.textStyle(colors:Color(0xFF9FC1CE)),
+                      style: AppTheme.textStyle(colors:const Color(0xFF9FC1CE)),
                     ),
                   ],
                 ),

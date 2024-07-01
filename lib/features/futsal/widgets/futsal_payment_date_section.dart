@@ -6,10 +6,9 @@ import 'package:nepali_date_picker/nepali_date_picker.dart';
 import '../model/court_model.dart';
 
 class FutsalPaymentDateSection extends StatefulWidget {
-  CourtModel courtModel;
-  String selectedDate;
-
-  FutsalPaymentDateSection({required this.courtModel,required this.selectedDate,super.key});
+  final CourtModel courtModel;
+  final String selectedDate;
+  const FutsalPaymentDateSection({required this.courtModel,required this.selectedDate,super.key});
 
   @override
   State<FutsalPaymentDateSection> createState() => _FutsalPaymentDateSectionState();
@@ -31,19 +30,21 @@ class _FutsalPaymentDateSectionState extends State<FutsalPaymentDateSection> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                  DateTimeUtils.formatDate(NepaliDateTime.parse(DateTimeUtils.convertToNumericFormat(widget.selectedDate))),
-                  style: AppTheme.textStyle(colors: Color(0xFF22577A)),
+                  DateTimeUtils.
+                  formatDate(NepaliDateTime.parse(DateTimeUtils.
+                  convertToNumericFormat(widget.selectedDate))),
+                  style: AppTheme.textStyle(colors: const Color(0xFF22577A)),
               ),
               Row(
                 children: [
                   Text(
                       widget.courtModel.time,
-                      style: AppTheme.textStyle(colors: Color(0xFF7297AD),
+                      style: AppTheme.textStyle(colors: const Color(0xFF7297AD),
                   )),
-                  VerticalDivider(),
+                  const VerticalDivider(),
                   Text(
                       "1 hr",
-                      style: AppTheme.textStyle(colors:  Color(0xFF7297AD))
+                      style: AppTheme.textStyle(colors:  const Color(0xFF7297AD))
                   )
                 ],
               ),

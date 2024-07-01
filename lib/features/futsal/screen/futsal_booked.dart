@@ -18,7 +18,7 @@ class FutsalBooked extends StatelessWidget {
           style: GoogleFonts.inter(
             fontSize: 24.0,
             fontWeight: FontWeight.w700,
-            color:Color(0xFF374151)
+            color:const Color(0xFF374151)
           ),
         ),
         Text(
@@ -26,16 +26,16 @@ class FutsalBooked extends StatelessWidget {
           style: GoogleFonts.inter(
             fontSize: 18.0,
             fontWeight: FontWeight.w500,
-            color:Color(0xFF2f667a)
+            color:const Color(0xFF2f667a)
           ),
         ),
         Padding(
           padding: const EdgeInsets.all(40.0),
           child: ElevatedButton(
           onPressed: (){
-              Navigator.push(context,MaterialPageRoute(builder: (_)=> FutsalHomeScreen()));
+              Navigator.push(context,MaterialPageRoute(builder: (_)=> const FutsalHomeScreen()));
           },
-              child: Text("Back Home")
+              child: const Text("Back Home")
           ),
         )
 

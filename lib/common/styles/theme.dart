@@ -63,6 +63,9 @@ class AppTheme {
           labelStyle: TextStyle(
               color: AppTheme.primaryColor
           ),
+          hintStyle: TextStyle(
+              color: AppTheme.primaryColor
+          ),
         contentPadding: EdgeInsets.all(18.0),
         border: OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(20.0)),

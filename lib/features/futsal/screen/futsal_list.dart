@@ -17,7 +17,7 @@ class FutsalHeader extends StatefulWidget {
 class _FutsalHeaderState extends State<FutsalHeader> {
   String? _selectedLocation;
   String? _selectedSortBy;
-  String? _startTime = null;
+  String? _startTime;
   NepaliDateTime _selectedDate = NepaliDateTime.now();
 
   @override

@@ -59,8 +59,8 @@ class _FutsalPaymentState extends State<FutsalPayment> {
                   selectedDate: selectedDate
               ),
             ),
-            SizedBox(height: 15.0),
-            PaymentSection()
+            const SizedBox(height: 15.0),
+            const PaymentSection()
           ],
         ),
       )

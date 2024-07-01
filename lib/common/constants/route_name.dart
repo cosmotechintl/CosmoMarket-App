@@ -5,9 +5,11 @@ class RouteName{
   static const String REGISTERNEXT="/register";
   static const String SERVICES="/services";
   static const String FUTSAL="/services/futsal";
-  static const String register="/register";
+  static const String MART="/services/mart";
   static const String FUTSALLIST="/services/futsal/main";
   static const String FUTSALBOOK="/services/futsal/book";
   static const String FUTSALPAYMENT="/services/futsal/payment";
   static const String FUTSALBOOKED="/services/futsal/booked";
+  static const String MartLocationSelect="/services/mart/location";
+  static const String MartHomePage="/services/mart/home";
 }

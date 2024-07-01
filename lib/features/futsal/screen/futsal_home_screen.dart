@@ -73,25 +73,25 @@ class _FutsalHomeScreenBodyState extends State<FutsalHomeScreenBody> {
                     const SizedBox(
                       height: 10.0,
                     ),
-                SearchableDropdown<int>(
-                  searchHintText:"Search Location",
-                  hintText: const Text(
-                      "Select Location",
-                    style: TextStyle(
-                      color:AppTheme.primaryColor
+                    SearchableDropdown<int>(
+                      searchHintText:"Search Location",
+                      hintText: const Text(
+                        "Select Location",
+                        style: TextStyle(
+                            color:AppTheme.primaryColor
+                        ),
+                      ),
+                      items: location.asMap().entries.map((entry) {
+                        int index = entry.key;
+                        String value = entry.value;
+                        return SearchableDropdownMenuItem<int>(
+                          value: index,
+                          child: Text(value),
+                          label: value,
+                        );
+                      }).toList(),
                     ),
-                  ),
-                  items: location.asMap().entries.map((entry) {
-                    int index = entry.key;
-                    String value = entry.value;
-                    return SearchableDropdownMenuItem<int>(
-                      value: index,
-                      child: Text(value),
-                      label: value,
-                    );
-                  }).toList(),
-                ),
-                ],
+                  ],
                 ),
               ),
               const SizedBox(height: 20.0,),
@@ -125,9 +125,9 @@ class _FutsalHomeScreenBodyState extends State<FutsalHomeScreenBody> {
                       ),
                       Text("${_selectedValue.toInt()} hr",
                         style: const TextStyle(
-                          color:AppTheme.primaryColor,
-                          fontWeight: FontWeight.w500,
-                          fontSize: 15.0
+                            color:AppTheme.primaryColor,
+                            fontWeight: FontWeight.w500,
+                            fontSize: 15.0
                         ),
                       )
                     ],
@@ -135,27 +135,27 @@ class _FutsalHomeScreenBodyState extends State<FutsalHomeScreenBody> {
                   const SizedBox(height: 20.0),
                 ],
               ),
-                  ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color(0xFFD5EDF5),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20.0),
-                          side: const BorderSide(
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xFFD5EDF5),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20.0),
+                        side: const BorderSide(
                             color: Color(0xFFCADBE0)
-                          )
-                        ),
-                        elevation: 0.0
-                      ),
-                      onPressed:(){
-                       Navigator.pushNamed(context,RouteName.FUTSALLIST) ;
-                      },
-                      child: Text(
-                          "Save and Next",
-                        style: GoogleFonts.inter(
-                            fontWeight: FontWeight.w600,
-                            color: const Color(0xFF6993AB)),
-                      ),
-                      )
+                        )
+                    ),
+                    elevation: 0.0
+                ),
+                onPressed:(){
+                  Navigator.pushNamed(context,RouteName.FUTSALLIST) ;
+                },
+                child: Text(
+                  "Save and Next",
+                  style: GoogleFonts.inter(
+                      fontWeight: FontWeight.w600,
+                      color: const Color(0xFF6993AB)),
+                ),
+              )
             ],
           ),
         ),

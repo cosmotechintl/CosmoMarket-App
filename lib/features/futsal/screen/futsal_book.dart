@@ -9,6 +9,8 @@ import 'package:nepali_date_picker/nepali_date_picker.dart';
 import '../controller/court_controller.dart';
 
 class FutsalBook extends StatefulWidget {
+  const FutsalBook({super.key});
+
 
   @override
   State<FutsalBook> createState() => _FutsalBookState();
@@ -52,6 +54,16 @@ class _FutsalBookState extends State<FutsalBook> {
                 _selectedDate = DateTimeUtils.formatDateNoDay(value);
               });
             },
+            selectedDayDecoration:const BoxDecoration(
+                color:AppTheme.primaryColor,
+                shape: BoxShape.circle
+            ),
+            todayDecoration:  BoxDecoration(
+              border: Border.all(
+                color: AppTheme.primaryColor
+              ),
+              shape: BoxShape.circle
+            ),
           ),
           Text(
               "Available Slot on $_selectedDate",

@@ -61,7 +61,7 @@ class _NavigationComponentState extends State<NavigationComponent> {
       ),
       body:  IndexedStack(
         index: currentPageIndex,
-        children: [
+        children: const [
           Home(),
           Services(),
           Explore(),

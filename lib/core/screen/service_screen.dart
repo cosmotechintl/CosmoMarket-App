@@ -3,11 +3,10 @@ import 'package:cosmomarket/core/controller/servicecontroller.dart';
 import 'package:cosmomarket/core/model/service_button_model.dart';
 import 'package:cosmomarket/route.dart';
 import 'package:flutter/material.dart';
-
 import '../widgets/service_button.dart';
 
 class Services extends StatelessWidget {
-  Services({super.key});
+  const Services({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +15,7 @@ class Services extends StatelessWidget {
 }
 
 class ServicePage extends StatefulWidget {
-  ServicePage({super.key});
+  const ServicePage({super.key});
 
   @override
   State<ServicePage> createState() => _ServicePageState();
@@ -34,6 +33,7 @@ class _ServicePageState extends State<ServicePage> {
   
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
           title: Text(
@@ -48,8 +48,10 @@ class _ServicePageState extends State<ServicePage> {
         crossAxisSpacing: 10,
         padding: const EdgeInsets.all(10),
         children: _servicesButton.map(
-                (model) => ServiceButton(model: model)).toList(),
+                (model) => ServiceButton(model: model)
+        ).toList(),
         ),
     );
+
   }
 }

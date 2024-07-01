@@ -1,4 +1,7 @@
+
+import 'package:cosmomarket/common/styles/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 class CustomTimePicker{
 
   static String selectedTime = TimeOfDay.now().hour.toString();
@@ -12,7 +15,7 @@ class CustomTimePicker{
         return StatefulBuilder(
           builder: (context, setState) {
             return Dialog(
-              backgroundColor: Colors.white,
+              backgroundColor: AppTheme.serviceButtonColor,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(16.0),
               ),
@@ -25,19 +28,19 @@ class CustomTimePicker{
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Container(
-                        height: 10.0,
-                        decoration: const BoxDecoration(
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black26,
-                              blurRadius: 8.0,
-                              spreadRadius: 1.0,
-                              offset: Offset(0, 2),
-                            ),
-                          ],
-                        ),
-                      ),
+                      // Container(
+                      //   height: 10.0,
+                      //   decoration: const BoxDecoration(
+                      //     boxShadow: [
+                      //       BoxShadow(
+                      //         color: Colors.black26,
+                      //         blurRadius: 8.0,
+                      //         spreadRadius: 1.0,
+                      //         offset: Offset(0, 2),
+                      //       ),
+                      //     ],
+                      //   ),
+                      // ),
                       Expanded(
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.center,
@@ -147,7 +150,13 @@ class CustomTimePicker{
                               onPressed: (){
                                 Navigator.pop(context);
                               },
-                              child: const Text("Cancel")
+                              child: Text(
+                                  "Cancel",
+                                  style:GoogleFonts.inter(
+                                      color:AppTheme.primaryColor,
+                                      fontWeight:FontWeight.w700
+                                  )
+                              )
                           ),
                           TextButton(
                               onPressed: (){
@@ -156,7 +165,13 @@ class CustomTimePicker{
                                   'isAm': CustomTimePicker.isAm,
                                 });
                               },
-                              child: const Text("Select")
+                              child:  Text(
+                                  "Select",
+                                  style:GoogleFonts.inter(
+                                    color:AppTheme.primaryColor,
+                                    fontWeight:FontWeight.w700
+                                  )
+                              )
                           ),
                         ],
                       )
