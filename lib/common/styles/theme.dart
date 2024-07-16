@@ -10,6 +10,7 @@ class AppTheme {
   static const Color accentColor=Color(0xFFD3E3EB);
   static const Color secondaryTextColor=Color(0xFF8e9497);
   static const Color appbarTextColor=Color(0xFF22577A);
+  static const Color textStrokeColor=Color(0xFF7B9CAA);
 
   static TextStyle appbarTextStyle= GoogleFonts.hanuman(
       fontWeight: FontWeight.w700,

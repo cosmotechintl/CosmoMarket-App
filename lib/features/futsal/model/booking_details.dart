@@ -1,4 +1,4 @@
-import 'court_model.dart';
+import 'court_model.dart' show CourtModel;
 class BookingDetails {
   final CourtModel _courtModel;
   final String _selectedDate;

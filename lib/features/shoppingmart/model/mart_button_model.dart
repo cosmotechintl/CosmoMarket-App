@@ -4,9 +4,11 @@ class MartButtonModel{
   final int _martId;
 
   MartButtonModel(
-      {required String imageLink,
+      {
+        required String imageLink,
         required String name,
-        required int martId}
+        required int martId
+      }
       ):
       _image=imageLink,
       _name=name,

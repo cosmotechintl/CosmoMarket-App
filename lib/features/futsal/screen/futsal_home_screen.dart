@@ -25,7 +25,7 @@ class FutsalHomeScreenBody extends StatefulWidget {
 }
 
 class _FutsalHomeScreenBodyState extends State<FutsalHomeScreenBody> {
-  List<String> location = ["Tinkune", "Shantinagar", "Baneshwor"];
+  List<String> location = [ "Use Your Precise Location","Tinkune", "Shantinagar", "Baneshwor"];
   List<int> hrs=[1,2,3];
   String? _selectedLocation;
   int optionSelect = 1;
@@ -86,7 +86,18 @@ class _FutsalHomeScreenBodyState extends State<FutsalHomeScreenBody> {
                         String value = entry.value;
                         return SearchableDropdownMenuItem<int>(
                           value: index,
-                          child: Text(value),
+                          child: value=="Use Your Precise Location"?Row(
+                            children: [
+                              const Icon(
+                                Icons.location_searching_sharp,
+                                size:18.0
+                              ),
+                             const SizedBox(
+                               width: 20.0,
+                             ),
+                              Text(value),
+                            ],
+                          ):Text(value),
                           label: value,
                         );
                       }).toList(),

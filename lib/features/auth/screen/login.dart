@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import '../../../common/styles/theme.dart';
 import '../../../core/screen/navigation_screen.dart';
 
-final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-
 class Login extends StatefulWidget {
   const Login({super.key});
 
@@ -20,6 +18,7 @@ class _LoginState extends State<Login> {
 
   @override
   Widget build(BuildContext context) {
+    final GlobalKey<FormState> formkey = GlobalKey<FormState>();
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Center(
@@ -54,7 +53,7 @@ class _LoginState extends State<Login> {
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10.0),
                 child: Form(
-                  key: _formKey,
+                  key: formkey,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,

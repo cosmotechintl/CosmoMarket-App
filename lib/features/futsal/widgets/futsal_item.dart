@@ -74,7 +74,7 @@ class _FutsalItemState extends State<FutsalItem> {
         },
         separatorBuilder: (BuildContext context, int index) {
           return const SizedBox(
-            height:10.0
+            width:10.0
           );
 
         },

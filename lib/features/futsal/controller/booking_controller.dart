@@ -1,4 +1,4 @@
-import '../model/BookingDetails.dart';
+import '../model/booking_details.dart';
 import '../model/court_model.dart';
 
 class BookingController {

@@ -3,6 +3,7 @@ import 'package:cosmomarket/features/futsal/screen/futsal_book.dart';
 import 'package:cosmomarket/features/futsal/screen/futsal_home_screen.dart';
 import 'package:cosmomarket/features/shoppingmart/screen/mart_location.dart';
 import 'package:cosmomarket/features/shoppingmart/screen/mart_display.dart';
+import 'package:cosmomarket/features/shoppingmart/screen/product_details.dart';
 import 'package:flutter/material.dart';
 
 import 'common/constants/route_name.dart';
@@ -67,6 +68,9 @@ var martRoute = (RouteSettings settings) {
       break;
       case RouteName.MartHomePage:
       builder = (BuildContext _) => const MartHome();
+      break;
+      case RouteName.MartProductDetails:
+      builder = (BuildContext _) => const ProductDetails();
       break;
     default:
       throw Exception('Invalid route: ${settings.name}');

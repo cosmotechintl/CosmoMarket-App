@@ -46,6 +46,7 @@ class _FutsalPaymentState extends State<FutsalPayment> {
                 isAssets: false,
                 autoPlay: false,
                 sliderHeight: 300,
+                isClickable: false,
                 currentItemShadow: const [],
                 sliderDuration: const Duration(milliseconds: 200),
                 imageRadius: 40,

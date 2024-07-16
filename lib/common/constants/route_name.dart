@@ -12,4 +12,5 @@ class RouteName{
   static const String FUTSALBOOKED="/services/futsal/booked";
   static const String MartLocationSelect="/services/mart/location";
   static const String MartHomePage="/services/mart/home";
+  static const String MartProductDetails="/services/mart/product";
 }
