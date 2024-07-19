@@ -3,12 +3,8 @@ name: Firebase APP workflow
 on:
   push:
     branches:
-      - main
-
-  pull_request:
-    branches:
-      - main
-
+      - developer
+      
 jobs:
   firebase_app:
     name: Run Firebase Workflow
