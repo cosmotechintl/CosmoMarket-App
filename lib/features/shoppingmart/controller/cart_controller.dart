@@ -29,4 +29,13 @@ class CartController {
     int quantity = await _martDatabaseHelper.getQuantity(productId);
     return quantity;
   }
+
+  Future<List<Cart>> getCarts() async{
+    return _martDatabaseHelper.queryAllCart();
+  }
+
+  Future<int> getCount() {
+    return _martDatabaseHelper.totalCount();
+  }
+
 }

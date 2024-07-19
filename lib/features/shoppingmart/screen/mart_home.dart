@@ -1,5 +1,6 @@
 import 'package:banner_carousel/banner_carousel.dart' show BannerCarousel;
 import 'package:cosmomarket/common/styles/theme.dart' show AppTheme;
+import 'package:cosmomarket/features/shoppingmart/controller/cart_controller.dart';
 import 'package:cosmomarket/features/shoppingmart/controller/category_controller.dart' show CategoryController;
 import 'package:cosmomarket/features/shoppingmart/controller/deal_controller.dart' show DealController;
 import 'package:cosmomarket/features/shoppingmart/model/offermodel.dart' show OfferModel;
@@ -13,22 +14,34 @@ import '../widgets/categoryItem.dart' show CategoryItem;
 import '../widgets/deal.dart' show DealItem;
 import '../widgets/offer_item.dart' show OfferItem;
 
-class MartHome extends StatelessWidget {
+class MartHome extends StatefulWidget {
   const MartHome({super.key});
 
+  @override
+  State<MartHome> createState() => _MartHomeState();
+}
+
+class _MartHomeState extends State<MartHome> {
+  int cartCount=0;
+  CartController controller= CartController();
+  @override
+  void initState() {
+     _fetchCount();
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         actions:  [
           Padding(
-            padding: EdgeInsets.all(10.0),
+            padding: const EdgeInsets.all(10.0),
             child: GestureDetector(
               onTap: (){
-                Navigator.push(context,MaterialPageRoute(builder: (_)=>CartScreen()));
+                Navigator.push(context,MaterialPageRoute(builder: (_)=>const CartScreen()));
               },
               child: Badge(
-                  label:Text("0"),
+                  label:Text(cartCount.toString()),
                   child: Icon(Icons.shopping_cart)
               ),
             ),
@@ -37,6 +50,14 @@ class MartHome extends StatelessWidget {
       ),
       body: const MartHomePage(),
     );
+  }
+
+  Future<void> _fetchCount() async {
+    await controller.getCount().then((onValue){
+        setState(() {
+          cartCount=onValue;
+        });
+    });;
   }
 }
 

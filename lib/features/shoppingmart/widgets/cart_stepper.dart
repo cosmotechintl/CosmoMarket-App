@@ -3,11 +3,12 @@ import 'package:cosmomarket/features/shoppingmart/controller/cart_controller.dar
 import 'package:flutter/material.dart';
 
 import '../../../common/styles/theme.dart';
+import '../model/cart_model.dart';
+import '../model/productmodel.dart';
 
 class CartStepperWidget extends StatefulWidget {
-  final Function(int count) value;
-  final int productId;
-  const CartStepperWidget({super.key, required this.value, required this.productId});
+  final Cart product;
+  CartStepperWidget({super.key, required this.product});
 
   @override
   State<CartStepperWidget> createState() => _CartStepperWidgetState();
@@ -15,8 +16,7 @@ class CartStepperWidget extends StatefulWidget {
 
 class _CartStepperWidgetState extends State<CartStepperWidget> {
   int _counter = 0;
-
-
+  CartController controller=CartController();
   @override
   void initState() {
     _getQuantity();
@@ -25,10 +25,13 @@ class _CartStepperWidgetState extends State<CartStepperWidget> {
 
   Future<void> _getQuantity() async {
     final cartController=CartController();
-    _counter=await cartController.getQuantity(widget.productId);
-    setState(() {
-
-    });
+    await cartController.getQuantity(widget.product.productId).then(
+        (onValue){
+          setState(() {
+            _counter=onValue;
+          });
+        }
+    );
   }
   @override
   Widget build(BuildContext context) {
@@ -45,9 +48,26 @@ class _CartStepperWidgetState extends State<CartStepperWidget> {
         setState(() {
           _counter = count;
         });
-        widget.value(count);
+        _handleCartStepper(count);
       },
     );
+  }
+
+  void _handleCartStepper(int count) async {
+    Cart cart = Cart(
+      productId: widget.product.productId,
+      name: widget.product.name,
+      quantity: count,
+      price: widget.product.price,
+      img: widget.product.img,
+    );
+    if (count > 0) {
+      await controller.addToCart(cart);
+    } else {
+      await controller.removeFromCart(cart.productId);
+    }
+    await controller.checkIfAddedToCart(widget.product.productId);
+    setState((){});
   }
 
 

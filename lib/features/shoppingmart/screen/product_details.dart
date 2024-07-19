@@ -130,7 +130,14 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                         ),
                       ],
                     ),
-                    CartStepperWidget(value: (count) => _handleCartStepper(count), productId: product.id,)
+                    CartStepperWidget( product:
+                    Cart(
+                      img: product.img,
+                      productId: product.id,
+                      name:product.name,
+                      quantity: 0,
+                      price: product.price,
+                    ),)
                   ],
                 ),
               ),
