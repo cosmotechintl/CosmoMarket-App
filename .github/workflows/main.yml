@@ -3,7 +3,7 @@ name: Firebase APP workflow
 on:
   push:
     branches:
-      - developer
+      - main
       
 jobs:
   firebase_app:
